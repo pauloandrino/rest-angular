@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	
+</head>
+<script src="js/angular.js"></script>
+
+<body ng-app="myApp">
+	<div ng-controller="myCtrl">
+		{{firstName + " " + lastName}}
+		<p>{{nome}}</p>
+		<input ng-model="nome">
+		<button ng-click="funcao(nome)">Click Here!</button>
+		
+		<button ng-click="mostraEsconde()">Mostra/Esconde</button>
+		<p ng-show="mostra">{{texto}}</p>
+		
+		
+		<select ng-selected="selecionado">
+			<option ng-repeat="item in lista">{{item.formatado}}</option>
+		</select>
+		
+		<p>Aqui {{selecionado}}</p>
+		
+		<ul ng-repeat="item in lista">
+			<li>{{item.value}}</li>
+			<li>{{item.formatado}}</li>
+		</ul>
+		
+		<div>
+			<div style="background: #cdf233" ng-repeat="item in lista2">{{item.titulo}} </div>
+			
+		</div>
+	</div>
+	
+
+	<script>
+	
+	
+		var app = angular.module("myApp", []);
+		app.controller('myCtrl', function($scope) {
+			$scope.firstName = 'Paulo';
+			$scope.lastName = 'Andrino';
+			$scope.nome = 'Nome 2';
+			
+			$scope.mostra = true;
+			$scope.texto = 'Apareceu!';
+			
+			$scope.lista = [{value:true, formatado:'Sim'},
+			                {value:false, formatado:'Não'},
+			                {value:false, formatado:'Não'}]
+			
+			$scope.lista2 = [{titulo:'Aba1', texto:'Lorem ipsum'},
+			                 {titulo:'Aba2', texto:'Lorem ipsum'},
+			                 {titulo:'Aba3', texto:'Lorem ipsum'}]
+			
+			$scope.funcao = function(nome) {
+				alert(nome);
+				console.log(nome);
+			}
+			
+			$scope.mostraEsconde = function() {
+				$scope.mostra = !$scope.mostra;
+			}
+			
+			$scope.selecionado = '111';
+			
+			$scope.imprime = function(item) {
+				if(item.value) {
+					alert(item.valor)
+				}
+			}
+		});
+	</script>
+
+</body>
+</html>

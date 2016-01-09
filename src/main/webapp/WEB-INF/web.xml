@@ -1,0 +1,38 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+	<display-name>Archetype Created Web Application</display-name>
+	
+	<listener>
+		<listener-class>controller.ListenerTomCat</listener-class>
+	</listener>
+	
+	 <servlet>
+        <servlet-name>jersey-serlvet</servlet-name>
+        <servlet-class>
+            com.sun.jersey.spi.container.servlet.ServletContainer
+        </servlet-class>
+        <init-param>
+            <!-- Definição do leitor dos web services ficarão alocados no pacote abaixo-->
+            <param-name>com.sun.jersey.config.property.packages</param-name>
+
+            <!-- Nome do pacote no seu projeto -->
+            <param-value>controller</param-value>
+        </init-param>
+
+        <!-- Tempo de load -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>jersey-serlvet</servlet-name>
+        <!-- Url que deve ser inserida após o contexto para acessar os web services -->
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>   
+	
+
+</web-app>
+
+

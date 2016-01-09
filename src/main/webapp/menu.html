@@ -1,0 +1,7 @@
+<div ng-controller="menuCtrl">
+	<div>
+		<ul id="menu">
+			<li ng-repeat="item in menu" ng-click=redirect(item.link)>{{item.titulo}}</li>
+		</ul>
+	</div>
+</div>
